@@ -1,0 +1,35 @@
+msgid "Mainblock"
+msgstr "Основной блок"
+
+msgid "mainblock"
+msgstr "основной блок"
+
+msgid "license"
+msgstr "лицензия"
+
+msgid "licenses"
+msgstr "лицензии"
+
+msgid "document"
+msgstr "документ"
+
+msgid "documents"
+msgstr "документы"
+
+msgid "person"
+msgstr "работник"
+
+msgid "persons"
+msgstr "структура предприятия"
+
+msgid "purchase"
+msgstr "закупка"
+
+msgid "purchases"
+msgstr "закупки"
+
+msgid "purchase_attached_doc"
+msgstr "документ"
+
+msgid "purchase_attached_docs"
+msgstr "прикрепляемые документы"
