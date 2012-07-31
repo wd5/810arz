@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% if page.title %}
+    {% block title %}
+        {{ news_current.title }} - Новости &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>Новости</h1>
+
+
+    <div class="new">
+        <div class="new_date">{{ news_current.date_add|date:"j E" }}</div>
+        {% if news_current.image %}
+            {% thumbnail news_current.image "432x236" crop="center" as im %}
+                <div class="new_img"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" /></div>
+            {% endthumbnail %}
+        {% endif %}
+        <h2 class="new_h"><span>{{ news_current.title }}</span></h2>
+        <div class="new_short"><p>{{ news_current.text|safe }}</p></div>
+    </div>
+
+{% endblock %}

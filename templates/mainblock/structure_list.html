@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% if page.title %}
+    {% block title %}
+        Структура предприятия &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>Структура предприятия</h1>
+
+    <div class="structure">
+        {% for pesron in pesrons %}
+            <div class="worker">
+                {% if pesron.photo %}
+                    <div class="worker_photo">
+                        {% thumbnail pesron.photo "1000" upscale=0 as big %}
+                        <a href="{{ big.url }}" class="fancybox">
+                            {% thumbnail pesron.photo "68x68" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" />
+                            {% endthumbnail %}
+                        </a>
+                        {% endthumbnail %}
+                    </div>
+                {% endif %}
+                <h2 class="worker_name">{{ pesron.fullname }}</h2>
+                <div class="worker_post">{{ pesron.post_title }}</div>
+                <div class="worker_tels"><span>Тел:</span> {{ pesron.phone_num }}</div>
+                <div class="cl"></div>
+            </div>
+        {% empty %}
+            Работники пока не добавлены
+        {% endfor %}
+
+
+
+    </div><!--/news-->
+{% endblock %}

@@ -37,8 +37,8 @@ class PurchaseDocInline(admin.TabularInline):
     model = PurchaseAttachedDoc
 
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ('id','title','price','is_published',)
-    list_display_links = ('id','title','price',)
+    list_display = ('id','title','type','price','is_published',)
+    list_display_links = ('id','title','type','price',)
     list_editable = ('is_published',)
     search_fields = ('title','price',)
     list_filter = ('date_create','is_published',)

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% if page.title %}
+    {% block title %}
+        Лицензии и сертификаты &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>Лицензии и сертификаты</h1>
+
+    <div class="licensies">
+        {% for license in licenses %}
+            <div class="license col">
+                <a {% if license.file %}class="license_img" href="{{ license.file.url }}"
+                   {% else %}
+                   {% thumbnail license.image "1000" upscale=0 as big %} href="{{ big.url }}" {% endthumbnail %}
+                   class="license_img fancybox"{% endif %}>
+                    {% thumbnail license.image "161x230" crop="center" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" />
+                    {% endthumbnail %}
+                </a>
+                <h3 class="license_name">{{ license.title }}</h3>
+            </div>
+        {% empty %}
+            Лицензии и сертификаты пока не добавлены.
+        {% endfor %}
+
+
+    </div><!--/licensies-->
+{% endblock %}

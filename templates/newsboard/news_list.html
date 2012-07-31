@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load thumbnail items_loader_extras %}
+
+{% if page.title %}
+    {% block title %}
+        Новости &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>Новости</h1>
+
+    <div class="news load_block">
+        {% block_items_loader news "news" "newsboard" "news" 2 "" "" %}
+    </div><!--/news-->
+{% endblock %}

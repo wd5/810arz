@@ -2,7 +2,7 @@ $(function() {
 
     $('.load_items').live('click',function(){
         var el = $(this);
-        var parent = $(this).parents('.load_block');
+        var parent = $('.load_block');
         $.ajax({
             url: "/load_items/",
             data: {

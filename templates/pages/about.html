@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% if page.title %}
+    {% block title %}
+        {{ page.title }} &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>ОАО «810 Авиационный ремонтный завод»</h1>
+    <div class="about">
+        {% if slider %}
+            <div class="gallery">
+                <ul class="gellery_in">
+                    {% for slide in slider %}
+                        <li>
+                            {% thumbnail slide.image "565x286" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" />
+                            {% endthumbnail %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if slider|length > 1 %}
+                    <div class="next"></div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="about_l col">
+            <div class="text">
+                {{ page.content|safe }}
+            </div>
+        </div>
+
+        <div class="about_r col">
+            <img src="/media/img/minimap.png" alt="" />
+            <div class="contacts_lnk"><a href="/contacts/">Контактная информация</a></div>
+        </div>
+    </div>
+{% endblock %}

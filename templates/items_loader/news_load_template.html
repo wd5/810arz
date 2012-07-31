@@ -1,0 +1,38 @@
+{% load pytils_numeral thumbnail %}
+{% for item in items %}
+
+    <div class="new{% if not initial %} loaded" style="display: none;{% endif %}">
+        <div class="new_date">{{ item.date_add|date:"j E" }}</div>
+        {% if item.image %}
+            {% thumbnail item.image "432x236" crop="center" as im %}
+                <div class="new_img"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" /></div>
+            {% endthumbnail %}
+        {% endif %}
+        <h2 class="new_h"><a href="/news/{{ item.id }}/">{{ item.title }}</a></h2>
+        {% if item.short_text %}
+            <div class="new_short"><p>{{ item.short_text|safe }}</p></div>
+        {% endif %}
+    </div>
+
+
+{% endfor %}
+
+{% if initial and next_count %}
+    <div class="btn service_load_button">
+        <div class="btn_in">
+            {% if next_count < load_count %}
+                <a href="#" class="load_items">Ещё <span class="cnt">{{ next_count }}</span></a>
+            {% else %}
+                <a href="#" class="load_items">Ещё <span class="cnt">{{ load_count }}</span></a>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+{% if remaining_count %}
+    <input type="hidden" id="remaining_count_text" value="Ещё <span class='cnt'>{{ remaining_count }}</span>">
+{% endif %}
+
+
+
+

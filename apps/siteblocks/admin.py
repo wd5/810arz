@@ -13,6 +13,13 @@ class SettingsAdminForm(forms.ModelForm):
     class Meta:
         model = Settings
 
+    class Media:
+            js = (
+                '/media/js/jquery.js',
+                'http://api-maps.yandex.ru/2.0/?load=package.full&mode=debug&lang=ru-RU',
+                '/media/js/ymaps_form.js',
+            )
+
     def __init__(self, *args, **kwargs):
         super(SettingsAdminForm, self).__init__(*args, **kwargs)
         try:

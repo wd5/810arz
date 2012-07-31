@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load thumbnail items_loader_extras %}
+
+{% if page.title %}
+    {% block title %}
+        Закупки &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>Закупки</h1>
+
+    {% if purch_doc_file %}
+        <div class="polojenie">
+            <a href="{{ purch_doc_file }}">Положение о закупках</a>
+            <span>{{ ext|upper }}, {{ size }}</span>
+        </div>
+    {% endif %}
+
+
+    <div class="zakupki_menu">
+        <ul>
+            <li {% if type == 'current' %}class="curr curr_1"{% endif %}><a href="/purchases/current/">Текущие</a></li>
+            <li {% if type == 'plan' %}class="curr curr_1"{% endif %}><a href="/purchases/plan/">Планируемые</a></li>
+            <li {% if type == 'archive' %}class="curr curr_1"{% endif %}><a href="/purchases/archive/">Архивные</a></li>
+        </ul>
+    </div>
+
+    {% if purchases %}
+
+    <input type="hidden" id="m_name" value="Purchase">
+    <input type="hidden" id="a_name" value="mainblock">
+    <input type="hidden" id="loaded_count" value="{{ loaded_count }}">
+    <input type="hidden" id="all_loaded_ids" autocomplete="off" value="{{ next_id_loaded_items }}" />
+
+    <table class="zak_table load_block">
+
+        <tr>
+            <th>Дата создания</th>
+            <th>Наименование</th>
+            <th>Стоимость контракта</th>
+        </tr>
+
+        {% for purchase in purchases %}
+            <tr {% cycle '' 'class="bl"' %}>
+               <td class="zak_date_col">{{ purchase.date_create|date:"j E" }}</td>
+               <td class="zak_file_col">
+                   {% for doc in purchase.get_documents %}
+                       <div {% if forloop.first %}class="zak_main_file"{% else %}class="zak_secondary_file"{% endif %}><a href="{{ doc.protocol.url }}">{{ doc.title }}</a></div>
+                   {% empty %}
+                       <div class="zak_main_file">{{ purchase.title }}</div>
+                   {% endfor %}
+               </td>
+               <td class="zak_price_col">{{ purchase.get_str_price }} <span>руб.</span></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    {% if next_id_loaded_items %}
+        <div class="btn"><div class="btn_in"><a href="#" class="load_purch">Ещё закупки</a></div></div>
+    {% endif %}
+
+    {% else %}
+        Закупки ещё не добавлены
+    {% endif %}
+
+{% endblock %}

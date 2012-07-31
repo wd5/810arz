@@ -16,9 +16,10 @@ TEMPLATE_DEBUG = DEBUG
 INSTALLED_APPS += (
     'apps.siteblocks',
     'apps.pages',
-    #'apps.slider',
+    'apps.slider',
     'apps.newsboard',
     'apps.mainblock',
+    'apps.utils.items_loader',
 
 
 

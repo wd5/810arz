@@ -73,3 +73,29 @@ def crop_image_view(request, app_name, model_name, id):
 
     next = request.path.replace('crop/', '')
     return http.HttpResponseRedirect(next)
+
+def upload_pricelist(request):
+    if request.user.is_staff:
+        if request.method == 'POST':
+            f = request.FILES['file']
+            filename = request.FILES['file'].name
+            name, ext = os.path.splitext(translify(filename).replace(' ', '_'))
+            newname = '/uploads/' + 'purchase_doc' + ext
+            oldfile = 'purchase_doc'
+            for root, dirs, files in os.walk(settings.MEDIA_ROOT+'/uploads/',):
+                for filename in files:
+                    name, ext = os.path.splitext(translify(u'%s' % filename).replace(' ', '_'))
+                    if name=='purchase_doc':
+                        oldfile = '/uploads/' + filename
+            try:
+                os.remove(settings.MEDIA_ROOT + oldfile)
+            except OSError:
+                oldfile = False
+            path_name = settings.MEDIA_ROOT + newname
+            destination = open(path_name, 'wb+')
+            for chunk in f.chunks():
+                destination.write(chunk)
+            destination.close()
+            return http.HttpResponseRedirect('/admin/')
+    else:
+        return http.HttpResponse('403 Forbidden. Authentication Required!')

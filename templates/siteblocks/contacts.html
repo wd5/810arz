@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block extended_js %}
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.full&mode=debug&lang=ru-RU" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(function(){
+
+        ymaps.ready(function () {
+            {% if contact_map %}
+                var map = new ymaps.Map("map",
+                    {
+                        center: [{{ contact_map }}],
+                        zoom: 15,
+                        type: "yandex#publicMap"
+                    }
+                );
+
+                map.controls.add("zoomControl");
+
+
+                var placemark = new ymaps.Placemark(
+                    [{{ contact_map }}],
+                    {
+                        'balloonContent': "{{ address }}"
+                    }
+                );
+                map.geoObjects.add(placemark);
+
+            {% endif %}
+
+        });
+    });
+    </script>
+{% endblock %}
+
+{% if page.title %}
+    {% block title %}
+        Контактная информация &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>Контактная информация</h1>
+    <div class="contacts_page">
+        <div><address>{{ address }}</address></div>
+        <div class="contacts_tel">{{ phone|safe }}</div>
+        <div class="contacts_map">
+            <div id="map" style="height:450px;width:680px;"></div>
+        </div>
+    </div>
+{% endblock %}

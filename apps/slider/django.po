@@ -1,8 +1,8 @@
 msgid "Slider"
-msgstr "Слайдер"
+msgstr "Слайдер на странице о компании"
 
 msgid "slider"
-msgstr "Слайдер"
+msgstr "cлайдер на странице о компании"
 
 msgid "slider_photo"
 msgstr "фотография"

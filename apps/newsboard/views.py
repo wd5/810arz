@@ -8,15 +8,12 @@ from django.http import HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 
-from models import News, NewsCategory
+from models import News
 
 class NewsListView(ListView):
     model = News
     context_object_name = 'news'
-    queryset = model.objects.published()
-
-    def get_categories_list(self, **kwargs):
-        return NewsCategory.objects.all()
+    queryset = model.objects.published()[:5]
 
 #    def get_queryset(self):
 #        from django.db.models import Q
@@ -34,7 +31,6 @@ class NewsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(NewsListView, self).get_context_data(**kwargs)
-        context['categories_list'] = self.get_categories_list()
         context['current_date'] = self.request.GET.get('date', None)
         return context
 
@@ -45,12 +41,7 @@ class NewsDetailView(DetailView):
     context_object_name = 'news_current'
     model = News
     queryset = model.objects.published()
-    template_name = 'newsboard/detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(NewsDetailView, self).get_context_data(**kwargs)
-        context['categories_list'] = NewsListView.get_categories_list()
-        return context
+    template_name = 'newsboard/news_detail.html'
 
     def get_object(self, queryset=None):
         queryset = self.get_queryset()

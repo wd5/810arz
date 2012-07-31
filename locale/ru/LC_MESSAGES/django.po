@@ -166,12 +166,11 @@ msgstr "настройки сайта"
 
 
 #: apps/slider/__init__.py:2
-msgid "slider"
-msgstr "Слайдер"
-
-#: apps/slider/__init__.py:3
 msgid "Slider"
-msgstr "Слайдер"
+msgstr "Слайдер на странице о компании"
+
+msgid "slider"
+msgstr "cлайдер на странице о компании"
 
 #: apps/slider/models.py:35
 msgid "slider_photo"
