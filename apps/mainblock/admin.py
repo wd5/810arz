@@ -16,9 +16,9 @@ class LicenseAdmin(admin.ModelAdmin, AdminImageMixin):
 admin.site.register(License, LicenseAdmin)
 
 class DocumentAdmin(admin.ModelAdmin, AdminImageMixin):
-    list_display = ('id','title','order','is_published',)
-    list_display_links = ('id','title',)
-    list_editable = ('order','is_published',)
+    list_display = ('id','title','create_date','is_published',)
+    list_display_links = ('id','title','create_date',)
+    list_editable = ('is_published',)
     list_filter = ('is_published',)
     search_fields = ('title',)
 
@@ -37,8 +37,8 @@ class PurchaseDocInline(admin.TabularInline):
     model = PurchaseAttachedDoc
 
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ('id','title','type','price','is_published',)
-    list_display_links = ('id','title','type','price',)
+    list_display = ('id','title','type','date_create','is_published',)
+    list_display_links = ('id','title','type','date_create',)
     list_editable = ('is_published',)
     search_fields = ('title','price',)
     list_filter = ('date_create','is_published',)

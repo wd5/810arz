@@ -2,7 +2,12 @@
 
 
 /*6-7*/
-.col {
+.col,
+.i_zakupka,
+.menu .curr,
+.zakupki_menu li,
+.btn,
+.btn_in {
 	*display:inline;
 	*zoom:1;
 }

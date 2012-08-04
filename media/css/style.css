@@ -143,6 +143,163 @@ input, textarea {
 
 
 
+
+
+/*i*/
+.i {
+	color: #fff;
+	background: #000 url('../img/ibg.jpg') no-repeat center 0;
+}
+.i .main {
+	padding: 520px 0 0 0;
+	position: relative;
+}
+
+#logo_big {
+	position: absolute;
+	top: 18px;
+	left: 4px;
+}
+
+
+.i_menu li {
+	position: absolute;
+}
+.i_menu a {
+	color: #fff;
+}
+
+.i_menu_1 {
+	top: 54px;
+	left: 200px;
+	font-size: 18px;
+	line-height: 24px;
+}
+.i_menu_2 {
+	top: 40px;
+	left: 418px;
+	font-size: 24px;
+	line-height: 30px;
+}
+.i_menu_3 {
+	top: 94px;
+	left: 560px;
+}
+.i_menu_4 {
+	top: 188px;
+	left: 734px;
+	line-height: 16px;
+	width: 100px;
+}
+.i_menu_5 {
+	top: 314px;
+	left: 772px;
+}
+.i_menu_6 {
+	top: 368px;
+	left: 708px;
+	font-size: 24px;
+	line-height: 26px;
+}
+.i_menu_7 {
+	top: 190px;
+	left: 168px;
+	font-size: 36px;
+	line-height: 42px;
+}
+.i_menu_8 {
+	top: 144px;
+	left: 10px;
+	line-height: 16px;
+	width: 100px;
+}
+
+.i_tel {
+	color: #2da0d1;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 54px;
+	position: absolute;
+	top: 24px;
+	right: 50px;
+	letter-spacing: -1px;
+}
+.i_tel span {
+	font-style: italic;
+	font-size: 18px;
+	position: relative;
+	top: -20px;
+}
+
+
+.map_teaser {
+	background: url('../img/minimap.png') no-repeat;
+	position: absolute;
+	top: 270px;
+	left: 24px;
+	width: 184px;
+	height: 108px;
+}
+.map_teaser_quote {
+	font-style: italic;
+	margin-left: -20px;
+}
+.map_teaser p {
+	background: url('../img/line.png') no-repeat 37px 53px;
+	position: absolute;
+	padding: 106px 0 0 0;
+	position: relative;
+	left: 70px;
+}
+
+.i_zakupki {
+	border: 1px solid #3597c0;
+	border-radius: 10px;
+	position: relative;
+	padding: 20px;
+	margin: 0 40px 54px 40px;
+}
+.i_zakupki h2 {
+	background: url('../img/i_zakupki_tl.png') no-repeat;
+	width: 183px;
+	height: 45px;
+	padding: 6px 0 0 20px;
+	position: absolute;
+	left: -1px;
+	top: -31px;
+}
+.i_zakupka {
+	display: inline-block;
+	vertical-align: top;
+	width: 230px;
+	margin: 0 40px 0 0;
+}
+.i_zakupka h3 {
+	font-size: 18px;
+	line-height: 21px;
+	margin-bottom: 6px;
+}
+.i_zakupka_price {
+	font-size: 24px;
+	line-height: 36px;
+	font-weight: bold;
+}
+.i_zakupka_price span {
+	font-weight: normal;
+	font-style: italic;
+	font-size: 15px;
+	color: #ccc;
+}
+
+
+.i .footer {border: none;}
+.i #copyright {margin: 0;}
+.i #madein {color: #fff;}
+/*/i*/
+
+
+
+
 /*logo*/
 #logo_box {
 	text-decoration: none;
@@ -292,9 +449,21 @@ input, textarea {
 
 /*zakupki*/
 .polojenie {
+	background: url('../img/doc.png') no-repeat 0 4px;
 	float: right;
 	width: 100px;
 	margin: -80px 0 0 0;
+	padding: 0 0 0 74px;
+}
+.polojenie a {
+	font-size: 16px;
+	color: #000;
+}
+.polojenie span {
+	color: #878787;
+	font-style: italic;
+	display: block;
+	margin-top: 6px;
 }
 .zakupki_menu {
 	margin: 0 0 24px 0;
@@ -304,7 +473,7 @@ input, textarea {
 	vertical-align: top;
 	font-size: 18px;
 	line-height: 24px;
-	padding: 8px 15px 12px 15px;
+	padding: 7px 15px 13px 15px;
 	margin: 0 12px 0 0;
 }
 .zakupki_menu a {
@@ -314,15 +483,22 @@ input, textarea {
 }
 .zakupki_menu .curr a {
 	border: none;
+	font-weight: bold;
 }
 .curr_1 {
-	background: url('../img/curr_1.png') no-repeat;
+	background: url('../img/curr_1.png') no-repeat center 0;
+	width: 68px;
+	text-align: center;
 }
 .curr_2 {
-	background: url('../img/curr_2.png') no-repeat;
+	background: url('../img/curr_2.png') no-repeat center 0;
+	width: 108px;
+	text-align: center;
 }
 .curr_3 {
-	background: url('../img/curr_3.png') no-repeat;
+	background: url('../img/curr_3.png') no-repeat center 0;
+	width: 88px;
+	text-align: center;
 }
 
 .zak_table {
@@ -343,7 +519,7 @@ input, textarea {
 }
 .zak_date_col {
 	width: 80px;
-	text-align: center;
+	text-align: left;
 }
 .zak_main_file {
 	font-weight: bold;
@@ -410,6 +586,19 @@ input, textarea {
 
 
 
+
+/*docs*/
+.docs_table {
+	width: 100%;
+}
+.docs_table .zak_main_file {
+	font-weight: normal;
+}
+/*/docs*/
+
+
+
+
 /*contacts*/
 .contacts_page address {
 	font-size: 24px;
@@ -439,6 +628,89 @@ input, textarea {
 /*/contacts*/
 
 
+
+
+
+/*f*/
+.f {
+	background: #000;
+	position: relative;
+	height: 792px;
+	width: 100%;
+	margin-bottom: 36px;
+}
+.f_light {
+	background: url('../img/f_light.png') no-repeat center 0;
+	height: 792px;
+}
+
+.otvinta {
+	position: absolute;
+	top: 162px;
+	left: 60px;
+}
+
+
+.f_content {
+	margin: 0 auto;
+	width: 960px;
+	padding: 0 18px;
+	position: relative;
+	z-index: 10;
+}
+#logo_white {
+	position: absolute;
+	top: 20px;
+	left: 5px;
+}
+.bread {
+	font-style: italic;
+	font-size: 16px;
+	color: #fff;
+	position: absolute;
+	top: 18px;
+	left: 160px;
+}
+.services_menu li {
+	position: absolute;
+}
+.service_1 {
+	top: 180px;
+	left: 186px;
+	font-size: 36px;
+	line-height: 42px;
+}
+.service_2 {
+	top: 118px;
+	left: 492px;
+	font-size: 72px;
+	line-height: 90px;
+}
+.service_3 {
+	top: 378px;
+	left: 686px;
+	font-size: 24px;
+	line-height: 30px;
+}
+.service_4 {
+	top: 594px;
+	left: 480px;
+	font-size: 30px;
+	line-height: 36px;
+}
+.service_5 {
+	top: 424px;
+	left: 132px;
+	font-size: 24px;
+	line-height: 30px;
+}
+
+.service_text {
+	width: 700px;
+	margin: 0 auto;
+}
+/*/f*/
+
 /*-----------------PAGE-END-----------------*/
 
 
@@ -453,6 +725,9 @@ input, textarea {
 }
 #copyright {
 	margin-left: 199px;
+}
+#copyright_1 {
+	margin-left: 130px;
 }
 #madein {
 	color: #000;

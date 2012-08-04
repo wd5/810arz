@@ -1,0 +1,16 @@
+{% load pytils_numeral thumbnail %}
+{% if items %}
+    {% for item in items %}
+        <tr {% if is_odd %}{% cycle 'class="bl"' '' %}{% else %}{% cycle '' 'class="bl"' %}{% endif %} >
+            <td class="zak_date_col">{{ item.create_date|date:"j E" }}</td>
+            <td class="zak_file_col"><div class="zak_main_file"><a href="{{ item.file.url }}">{{ item.title }}</a></div></td>
+        </tr>
+    {% endfor %}
+
+    <input type="hidden" id="new_loaded_ids" value="{{ load_ids }}" />
+
+    <input type="hidden" id="count" value="{{ count }}" />
+
+    <input type="hidden" id="remaining_count" value="{{ remaining_count }}" />
+
+{% endif %}

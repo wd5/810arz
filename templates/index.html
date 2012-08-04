@@ -8,16 +8,43 @@
     {% endblock %}
 {% endif %}
 
-{% block center %}
-    <div class="text text_page">
-        {% if page.image %}
-            <p>
-                {% thumbnail page.image "374x252" as  small %}
-                    <img src="{{ small.url }}" width="{{ small.x }}" height="{{ small.y }}" alt="" />
-                {% endthumbnail %}
-            </p>
-        {% endif %}
-        {{ page.content|safe }}
+{% block body_class %}class="i"{% endblock %}
+
+{% block main %}
+    <a href="/" id="logo_big"><img src="/media/img/logo_big.png" alt="" /></a>
+    		
+    <div class="i_tel">{{ phone|safe }}</div>
+    
+    <div class="i_menu">
+        <ul>
+            <li class="i_menu_1"><a href="/about/">О компании</a></li>
+            <li class="i_menu_2"><a href="/services/">Услуги</a></li>
+            <li class="i_menu_3"><a href="/news/">Новости</a></li>
+            <li class="i_menu_4"><a href="/licenses/">Лицензии и сертификаты</a></li>
+            <li class="i_menu_5"><a href="/docs/">Документация</a></li>
+            <li class="i_menu_6"><a href="/contacts/">Контактная информация</a></li>
+            <li class="i_menu_7"><a href="/purchases/">Закупки</a></li>
+            <li class="i_menu_8"><a href="/structure/">Структура предприятия</a></li>
+        </ul>
+    </div><!--/i_menu-->
+    
+    <div class="map_teaser">
+        <div class="map_teaser_quote">«На веере путей»</div>
+        <p>Сибирь и Дальний Восток</p>
     </div>
+
+    {% if purchases %}
+        <div class="i_zakupki">
+            <h2>Новые закупки</h2>
+            {% for purchase in purchases %}
+                <div class="i_zakupka">
+                   <div class="i_zakupka_date">{{ purchase.date_create|date:"j E" }}</div>
+                   <h3><a href="{{ purchase.get_first_document.protocol.url }}">{{ purchase.title }}</a></h3>
+                   <div class="i_zakupka_price">{{ purchase.get_str_price }} <span>руб.</span></div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 {% endblock %}
 

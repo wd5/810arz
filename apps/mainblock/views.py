@@ -3,7 +3,7 @@ from django.db.models.loading import get_model
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.template.loader import render_to_string
 from django.views.generic import TemplateView, ListView, View
-from apps.mainblock.models import License, Person, Purchase
+from apps.mainblock.models import License, Person, Purchase, Document
 from apps.siteblocks.views import Settings
 from apps.slider.models import Photo
 from pytils.translit import translify
@@ -16,6 +16,36 @@ class ShowLicensesView(ListView):
     queryset = License.objects.published()
 
 show_licenses = ShowLicensesView.as_view()
+
+class ShowDocumentsView(ListView):
+    model = Document
+    context_object_name = 'documents'
+    template_name = 'mainblock/documents_list.html'
+    queryset = Document.objects.published()
+
+    def get_context_data(self, **kwargs):
+        context = super(ShowDocumentsView, self).get_context_data(**kwargs)
+
+        try:
+            loaded_count = int(Settings.objects.get(name='loaded_count').value)
+        except:
+            loaded_count = 8
+        queryset = context['documents']
+        result = GetLoadIds(queryset, loaded_count)
+
+        splited_result = result.split('!')
+        try:
+            remaining_count = int(splited_result[0])
+        except:
+            remaining_count = False
+        next_id_loaded_items = splited_result[1]
+
+        context['documents'] = context['documents'][:loaded_count]
+        context['next_id_loaded_items'] = next_id_loaded_items
+        context['loaded_count'] = loaded_count
+        return context
+
+show_documents = ShowDocumentsView.as_view()
 
 
 class ShowStructureView(ListView):
@@ -173,10 +203,13 @@ class ItemsByIdLoaderView(View):
                 return HttpResponseBadRequest()
 
 
-
+            if model_name=="Document":
+                template_name = 'items_loader/documents_load_template.html'
+            else:
+                template_name = 'items_loader/purchases_load_template.html'
             response = HttpResponse()
             items_html = render_to_string(
-                'items_loader/purchases_load_template.html',
+                template_name,
                     {'items': queryset, 'remaining_count': remaining_count, 'load_ids': load_ids, 'count': loaded_count, 'is_odd': is_odd, }
             )
             response.content = items_html

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% if page.title %}
+    {% block title %}
+        Документация &mdash;
+    {% endblock %}
+{% endif %}
+
+{% block right %}
+    <h1>Документация</h1>
+
+    {% if documents %}
+
+    <input type="hidden" id="m_name" value="Document">
+    <input type="hidden" id="a_name" value="mainblock">
+    <input type="hidden" id="loaded_count" value="{{ loaded_count }}">
+    <input type="hidden" id="all_loaded_ids" autocomplete="off" value="{{ next_id_loaded_items }}" />
+
+    <div class="docs">
+        <table class="zak_table docs_table load_block">
+            {% for doc in documents %}
+                <tr {% cycle '' 'class="bl"' %}>
+                    <td class="zak_date_col">{{ doc.create_date|date:"j E" }}</td>
+                    <td class="zak_file_col"><div class="zak_main_file"><a href="{{ doc.file.url }}">{{ doc.title }}</a></div></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        {% if next_id_loaded_items %}
+            <div class="btn"><div class="btn_in"><a href="#" class="load_docs">Ещё документы</a></div></div>
+        {% endif %}
+
+    </div><!--/docs-->
+
+    {% else %}
+        Документация ещё не добавлена
+    {% endif %}
+
+{% endblock %}

@@ -9,17 +9,15 @@
 {% endif %}
 
 {% block right %}
-    <h1>Новости</h1>
+    <h1>{{ news_current.title }}</h1>
 
-
-    <div class="new">
+    {% if news_current.image %}
+        {% thumbnail news_current.image "432x236" crop="center" as im %}
+            <div class="new_img"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" /></div>
+        {% endthumbnail %}
+    {% endif %}
+    <div class="text">
         <div class="new_date">{{ news_current.date_add|date:"j E" }}</div>
-        {% if news_current.image %}
-            {% thumbnail news_current.image "432x236" crop="center" as im %}
-                <div class="new_img"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" /></div>
-            {% endthumbnail %}
-        {% endif %}
-        <h2 class="new_h"><span>{{ news_current.title }}</span></h2>
         <div class="new_short"><p>{{ news_current.text|safe }}</p></div>
     </div>
 

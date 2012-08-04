@@ -8,10 +8,47 @@
     {% endblock %}
 {% endif %}
 
-{% block right %}
-    <h1>{{ page.title }}</h1>
+{% if page.id == 3 or page.parent.id == 3 %} {# если услуги - то выводим статику по-другому #}
 
-    <div class="text text_page">
-        {{ page.content|safe }}
-    </div>
-{% endblock %}
+    {% block block_body %}
+        <div class="f">
+        	<div class="f_light">
+        		<div class="f_content">
+        			<a id="logo_white" href="/"><img src="/media/img/logo_white.png" alt="" /></a>
+
+        			<div class="bread">Услуги /</div>
+
+        			<div class="services_menu">
+        				<ul>
+        					<li class="service_1"><a href="/services/diagnostic/#service_text">Диагностика</a></li>
+        					<li class="service_2"><a href="/services/repair/#service_text">Ремонт</a></li>
+        					<li class="service_3"><a href="/services/utilization/#service_text">Утилизация</a></li>
+        					<li class="service_4"><a href="/services/modification/#service_text">Модификации</a></li>
+        					<li class="service_5"><a href="/services/transportation/#service_text">Транспортировка</a></li>
+        				</ul>
+        			</div>
+
+        			<div class="otvinta"><a href="#"><span>От винта!</span></a></div>
+        		</div>
+        	</div><!--/f_light-->
+        </div><!--/f-->
+    {% endblock %}
+
+    {% block main %}
+        <div class="text service_text">{# <a name="service_text"></a>  #}
+        {% if page.id == 3 %}
+            <h1>Стартовая страница услуг</h1>
+        {% else %}
+            <h1>{{ page.title }}</h1>
+        {% endif %}
+            {{ page.content|safe }}
+    {% endblock %}
+
+{% else %}
+    {% block right %}
+        <h1>{{ page.title }}</h1>
+        <div class="text">
+            {{ page.content|safe }}
+        </div>
+    {% endblock %}
+{% endif %}

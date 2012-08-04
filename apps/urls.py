@@ -6,7 +6,7 @@ from django.conf.urls.defaults import patterns, include, url
 from views import index
 from pages.views import show_about
 from apps.siteblocks.views import show_contacts
-from apps.mainblock.views import show_licenses, show_structure, purchases_list, items_loader_by_ids
+from apps.mainblock.views import show_licenses, show_structure, purchases_list, items_loader_by_ids, show_documents
 from apps.newsboard.views import news_list, news_detail
 from apps.utils.items_loader.views import items_loader
 from django.views.decorators.csrf import csrf_exempt
@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     (r'^contacts/$',show_contacts),
 
     (r'^licenses/$',show_licenses),
+    (r'^docs/$',show_documents),
 
     (r'^structure/$',show_structure),
 
