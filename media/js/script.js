@@ -98,4 +98,14 @@ $(function() {
         return false;
     });
 
+    $("#handle").draggable({
+        axis: "x",
+        containment: "#handle_container",
+        drag: function() {
+            var pos = parseInt($("#handle").css("left")) + 184;
+            $("#idiv").css('left', pos);
+            $("#il").css('width', pos);
+        }
+    });
+
 });

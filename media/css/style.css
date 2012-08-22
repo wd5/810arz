@@ -148,7 +148,7 @@ input, textarea {
 /*i*/
 .i {
 	color: #fff;
-	background: #000 url('../img/ibg.jpg') no-repeat center 0;
+	background: #000;
 }
 .i .main {
 	padding: 520px 0 0 0;
@@ -297,6 +297,74 @@ input, textarea {
 .i #madein {color: #fff;}
 /*/i*/
 
+
+
+
+
+/*ii*/
+#ii, #il, #ir {
+	position: absolute;
+	height: 603px;
+	width: 996px;
+}
+#ii {
+	background: #ccc;
+	top: 10px;
+	left: 0;
+}
+#il, #ir {	
+	top: 0;
+}
+#il {
+	background: url('../img/il.jpg') no-repeat;
+	left: 0;
+	width: 600px;
+}
+#ir {
+	background: url('../img/ir.jpg') no-repeat;
+	right: 0;
+}
+
+#handle_container {
+	width: 700px;
+	height: 50px;
+	position: absolute;
+	top: 124px;
+	left: 160px;
+}
+#handle {
+	cursor: pointer;
+	background: url('../img/handle.png') no-repeat;
+	position: absolute;
+	top: 0;
+	left: 416px;
+	width: 41px;
+	height: 41px;
+}
+#handle_before, #handle_after {
+	position: absolute;
+	top: 11px;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: bold;
+}
+#handle_before {
+	left: -30px;
+}
+#handle_after {
+	left: 50px;
+}
+
+#idiv {
+	position: absolute;
+	top: 10px;
+	left: 600px;
+	background: url('../img/idiv.png') no-repeat;
+	width: 71px;
+	height: 572px;
+	margin-left: -11px;
+}
+/*/ii*/
 
 
 
