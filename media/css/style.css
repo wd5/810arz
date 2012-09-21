@@ -56,7 +56,10 @@ body {
 	width: 996px;
 }
 
-.page {padding: 0 18px 0 18px;}
+.page {
+	padding: 0 18px 0 18px;
+	position: relative;
+}
 
 
 
@@ -301,6 +304,7 @@ input, textarea {
 
 
 
+
 /*ii*/
 #ii, #il, #ir {
 	position: absolute;
@@ -308,7 +312,6 @@ input, textarea {
 	width: 996px;
 }
 #ii {
-	background: #ccc;
 	top: 10px;
 	left: 0;
 }
@@ -365,6 +368,7 @@ input, textarea {
 	margin-left: -11px;
 }
 /*/ii*/
+
 
 
 
@@ -704,26 +708,141 @@ input, textarea {
 	background: #000;
 	position: relative;
 	height: 792px;
+	min-width: 1024px;
 	width: 100%;
-	margin-bottom: 36px;
+	margin: 0 0 36px 0;
 }
 .f_light {
 	background: url('../img/f_light.png') no-repeat center 0;
 	height: 792px;
+	width: 1024px;
+	margin: 0 auto;
+	position: relative;
 }
 
+
+#f_clouds {
+	display: none;
+	background: url('../img/f_bg.jpg') no-repeat;
+	width: 1024px;
+	height: 792px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+}
+#f_clouds_clouds {
+	background: url('../img/f_clouds.png') 0 0;
+	width: 850px;
+	height: 792px;
+	position: absolute;
+	top: 0;
+	left: 87px;
+}
+#f_clouds_vin {
+	background: url('../img/f_vin.png') no-repeat;
+	width: 1024px;
+	height: 792px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+
+#f_heli {
+	width: 996px;
+	height: 792px;
+	position: absolute;
+	top: 0;
+	left: 14px;
+	z-index: 4;
+}
+#f_heli_ground {
+	text-align: center;
+}
+#f_heli_ground img {
+	position: relative;
+	top: 108px;
+}
+
+#f_heli_shade {
+	background: url('../img/heli_shade.png') no-repeat;
+	width: 727px;
+	height: 714px;
+	position: absolute;
+	top: 23px;
+	left: 129px;
+}
+#f_heli_body {
+	background: url('../img/heli_body.png') no-repeat;
+	width: 531px;
+	height: 444px;
+	position: absolute;
+	top: 226px;
+	left: 123px;
+}
+#f_heli_blade_stat {
+	background: url('../img/heli_blade_stat.png') no-repeat;
+	width: 665px;
+	height: 674px;
+	position: absolute;
+	top: 16px;
+	left: 149px;
+}
+#f_heli_blade_anim {
+	display: none;
+	background: url('../img/heli_blade_anim.png') no-repeat;
+	width: 787px;
+	height: 744px;
+	position: absolute;
+	top: -9px;
+	left: 92px;
+}
+
+
+
+
 .otvinta {
+	font-size: 21px;
+	font-weight: bold;
 	position: absolute;
 	top: 162px;
 	left: 60px;
 }
+.otvinta a {
+	text-align: center;
+	color: #fff;
+	background: url('../img/otvinta.png') no-repeat center 10px;
+	text-decoration: none;
+	display: block;
+	width: 100px;
+	height: 10px;
+	padding: 120px 0 0 0;
+}
+.otvinta_on a {
+	background-position: center -124px;
+	font-size: 16px;
+}
+.otvinta span {border-bottom: 2px dotted #31afe6;}
+.otvinta .otvinta_on_span {
+	display: none;
+}
+.otvinta_on .otvinta_span {
+	display: none;
+}
+.otvinta_on .otvinta_on_span {
+	display: block;
+}
 
 
 .f_content {
-	margin: 0 auto;
+	margin: 0 0 0 -480px;
 	width: 960px;
 	padding: 0 18px;
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 50%;
 	z-index: 10;
 }
 #logo_white {
@@ -777,6 +896,7 @@ input, textarea {
 	width: 700px;
 	margin: 0 auto;
 }
+
 /*/f*/
 
 /*-----------------PAGE-END-----------------*/

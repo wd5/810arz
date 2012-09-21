@@ -109,3 +109,95 @@ $(function() {
     });
 
 });
+
+
+
+(function() {
+    $.fn.bgscroll = $.fn.bgScroll = function( options ) {
+        current = 0;
+        i = 0;
+        l = 0;
+        if( !this.length ) return this;
+        if( !options ) options = {};
+        if( !window.scrollElements ) window.scrollElements = {};
+         
+        for( var i = 0; i < this.length; i++ ) {
+            var allowedChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var randomId = '';
+            for( var l = 0; l < 5; l++ ) randomId += allowedChars.charAt( Math.floor( Math.random() * allowedChars.length ) );
+             
+                this[ i ].current = 0;
+                this[ i ].scrollSpeed = options.scrollSpeed ? options.scrollSpeed : 10;
+                this[ i ].direction = options.direction ? options.direction : 'h';
+                window.scrollElements[ randomId ] = this[ i ];
+                 
+                eval( 'window[randomId]=function(){var axis=0;var e=window.scrollElements.' + randomId + ';e.current -= 1;if (e.direction == "h") axis = e.current + "px 0";else if (e.direction == "v") axis = "0 " + e.current + "px";else if (e.direction == "d") axis = e.current + "px " + -e.current + "px";else if (e.direction == "n") l = -1000;$( e ).css("background-position", axis);}' );
+                                                          
+                setInterval( 'window.' + randomId + '()', options.scrollSpeed ? options.scrollSpeed : 10 );
+           }
+            return this;
+        }
+})(jQuery);
+
+
+
+$(function() {
+	$(".otvinta_span").click(function() {
+		$(this).parent().addClass('otvinta_on');
+		
+		$(function() {
+		    $('#f_heli_blade_stat').fadeOut(800);
+		    
+		    $('#f_heli_shade').fadeOut(1500);
+		    
+			$('#f_heli_blade_anim').fadeIn(1000).sprite({fps: 10, no_of_frames: 3});
+			
+		    $('#f_heli_ground').fadeOut(4000);
+		    
+		    $('#f_heli_ground img').animate({
+			    width: '200px',
+			    top: '400px',
+			    left: '-100px'
+			  }, 5000);
+		    $('#f_clouds').fadeIn(3000);
+		    
+		    $('#f_clouds_clouds').bgscroll({scrollSpeed:10, direction:'d' });
+		});
+		
+		return false;
+	});
+	
+	
+	$(".otvinta_on_span").click(function() {
+		$(this).parent().removeClass('otvinta_on');
+		
+		$(function() {
+		    $('#f_heli_ground img').css({'top' : '0', 'left' : '200px'});
+
+		    $('#f_clouds').fadeOut(4000);
+
+		    setTimeout(function() { 
+			    $('#f_clouds_clouds').bgscroll({scrollSpeed:0, direction:'n' }),
+			    $('#f_heli_blade_stat').fadeIn(800) 
+		    }, 3000);
+		    
+		    setTimeout(function() { 
+			    $('#f_heli_blade_anim').fadeOut(10).spStop(true),
+			    $('#f_heli_blade_anim').destroy()
+		    }, 3500);
+
+
+		    $('#f_heli_ground').fadeIn(3000);
+		    
+		    $('#f_heli_ground img').animate({
+			    width: '567px',
+			    top: '108px',
+			    left: '0'
+			  }, 3000);
+			  
+		    $('#f_heli_shade').fadeIn(3500);
+		});
+
+		return false;
+	});
+});
